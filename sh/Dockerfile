@@ -1,4 +1,4 @@
-FROM debian:stable-slim
+ FROM node:10-alpine
 
 LABEL "name"="sh"
 LABEL "maintainer"="GitHub Actions <support+actions@github.com>"
@@ -11,7 +11,8 @@ LABEL "com.github.actions.color"="gray-dark"
 
 COPY LICENSE README.md THIRD_PARTY_NOTICE.md /
 
+RUN apk --no-cache add zip openssl
+
 COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
-
